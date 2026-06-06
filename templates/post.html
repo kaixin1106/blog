@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<div class="date">{{ post.date }}</div>
+<div class="content">
+    {{ post.content|safe }}
+</div>
+<p><a href="/">← 返回首页</a></p>
+{% endblock %}
