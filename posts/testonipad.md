@@ -1,6 +1,6 @@
 ---
 title: 测试文件
-date: 2026-06-7
+date: 2026-06-07
 slug: test-file
 ---
 
