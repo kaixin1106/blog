@@ -1,0 +1,269 @@
+/* ==================================
+   Modern Markdown Theme
+   适用于 .markdown-body 容器
+   自动适配系统深色模式
+   ================================== */
+
+/* 基础容器 */
+.markdown-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1f2d3d;
+  background-color: #ffffff;
+  word-wrap: break-word;
+  scroll-behavior: smooth;
+}
+
+/* 深色模式自动适配 */
+@media (prefers-color-scheme: dark) {
+  .markdown-body {
+    color: #e2e8f0;
+    background-color: #0f172a;
+  }
+  .markdown-body code:not(pre code) {
+    background-color: #1e293b;
+    color: #f1f5f9;
+  }
+  .markdown-body pre {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+  }
+  .markdown-body table tr:nth-child(2n) {
+    background-color: #1e293b;
+  }
+  .markdown-body hr {
+    background-color: #334155;
+  }
+  .markdown-body blockquote {
+    border-left-color: #3b82f6;
+    color: #94a3b8;
+  }
+}
+
+/* 标题 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown-body h1 { font-size: 2em; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3em; }
+.markdown-body h2 { font-size: 1.5em; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3em; }
+.markdown-body h3 { font-size: 1.25em; }
+.markdown-body h4 { font-size: 1em; }
+.markdown-body h5 { font-size: 0.875em; }
+.markdown-body h6 { font-size: 0.85em; color: #4b5563; }
+
+@media (prefers-color-scheme: dark) {
+  .markdown-body h1,
+  .markdown-body h2 {
+    border-bottom-color: #334155;
+  }
+  .markdown-body h6 {
+    color: #9ca3af;
+  }
+}
+
+/* 段落 */
+.markdown-body p {
+  margin-bottom: 1em;
+}
+
+/* 链接 */
+.markdown-body a {
+  color: #3b82f6;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border 0.2s ease;
+}
+
+.markdown-body a:hover {
+  border-bottom-color: #3b82f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  .markdown-body a {
+    color: #60a5fa;
+  }
+  .markdown-body a:hover {
+    border-bottom-color: #60a5fa;
+  }
+}
+
+/* 列表 */
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.markdown-body li + li {
+  margin-top: 0.25em;
+}
+
+.markdown-body li > ul,
+.markdown-body li > ol {
+  margin-top: 0.25em;
+}
+
+/* 任务列表 */
+.markdown-body .task-list-item {
+  list-style-type: none;
+  margin-left: -1.2em;
+}
+
+.markdown-body .task-list-item input {
+  margin-right: 0.5em;
+}
+
+/* 引用块 */
+.markdown-body blockquote {
+  margin: 0 0 1em;
+  padding: 0 1em;
+  color: #4b5563;
+  border-left: 4px solid #3b82f6;
+  background: transparent;
+}
+
+/* 代码块 (基础样式，配合 Prism.js / highlight.js 效果更佳) */
+.markdown-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+}
+
+.markdown-body pre {
+  padding: 1rem;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 1em;
+  border: 1px solid #e2e8f0;
+}
+
+.markdown-body pre code {
+  padding: 0;
+  background: none;
+  font-size: 100%;
+  border-radius: 0;
+}
+
+/* 表格 */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+  display: block;
+  overflow-x: auto;
+}
+
+.markdown-body th,
+.markdown-body td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.markdown-body th {
+  font-weight: 600;
+  background-color: #f8fafc;
+}
+
+.markdown-body tr:nth-child(2n) {
+  background-color: #f9f9fb;
+}
+
+/* 水平分割线 */
+.markdown-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 1.5em 0;
+  background-color: #e2e8f0;
+  border: 0;
+}
+
+/* 图片 */
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* 脚注 (部分Markdown引擎支持) */
+.markdown-body .footnotes {
+  font-size: 0.9em;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 2em;
+  padding-top: 1em;
+}
+
+.markdown-body .footnote-ref {
+  vertical-align: super;
+  font-size: 0.75em;
+}
+
+/* 键盘标签 */
+.markdown-body kbd {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  font-size: 0.85em;
+  font-family: monospace;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 #cbd5e1;
+}
+
+/* 小提示/警告 (如果使用扩展语法，例如 > [!NOTE] ) */
+.markdown-body .callout {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.markdown-body .callout-note { border-left-color: #3b82f6; background: #eff6ff; }
+.markdown-body .callout-warning { border-left-color: #f59e0b; background: #fffbeb; }
+.markdown-body .callout-danger { border-left-color: #ef4444; background: #fef2f2; }
+
+@media (prefers-color-scheme: dark) {
+  .markdown-body .callout-note { background: #1e293b; }
+  .markdown-body .callout-warning { background: #422006; }
+  .markdown-body .callout-danger { background: #3b0c0c; }
+}
+
+/* 打印样式 */
+@media print {
+  .markdown-body {
+    background: white;
+    color: black;
+    padding: 0;
+    max-width: 100%;
+  }
+  .markdown-body a {
+    text-decoration: underline;
+  }
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+}
