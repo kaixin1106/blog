@@ -2,6 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 import markdown
 import frontmatter
+import shutil
 
 root_path = Path.cwd()
 OUTPUT_DIR = root_path/"dist"
@@ -41,3 +42,7 @@ for post in posts:
 index_html = env.get_template("index.html").render(posts=posts)
 with open(OUTPUT_DIR/"index.html", 'w', encoding='utf-8') as f:
     f.write(index_html)
+
+for file in TEMPLATES_DIR.iterdir():
+    if file.suffix == ".css":
+        shutil.copy2(file, OUTPUT_DIR/file.name)
