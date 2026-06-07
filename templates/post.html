@@ -3,10 +3,11 @@
 {% block content %}
 
 <link rel="stylesheet" href="markdown.css">
-<h1>{{ post.title }}</h1>
-<div class="date">{{ post.date }}</div>
-<div class="content">
-    <div class="markdown-body">
+
+<div class="markdown-body">
+	<h1>{{ post.title }}</h1>
+	<div class="date">{{ post.date }}</div>
+	<div class="content">   
         {{ post.content|safe }}
     </div>
 </div>
