@@ -1,6 +1,6 @@
 ---
 title: CSS/HTML by AI
-date: 2026-06.18
+date: 2026-06-18
 slug: ui-thinking-0
 ---
 
