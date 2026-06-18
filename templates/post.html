@@ -1,16 +1,32 @@
 {% extends "base.html" %}
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}{{ post.title }} - 我的博客{% endblock %}
 {% block content %}
+<article class="post-article">
+    <!-- 面包屑导航 -->
+    <nav class="breadcrumb">
+        <a href="/">← 返回首页</a>
+    </nav>
 
-<link rel="stylesheet" href="markdown.css">
+    <!-- 文章头部 -->
+    <div class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-metadata">
+            <span class="post-date">
+                📅 发布于 {{ post.date }}
+            </span>
+        </div>
+    </div>
 
-<div class="markdown-body">
-	<h1>{{ post.title }}</h1>
-	<div class="date">{{ post.date }}</div>
-	<div class="content">   
+    <!-- 文章内容 -->
+    <div class="markdown-body">
         {{ post.content|safe }}
     </div>
-</div>
-<p><a href="/">← 返回首页</a></p>
 
+    <!-- 文章底部 -->
+    <div class="post-footer">
+        <nav class="post-navigation">
+            <a href="/" class="btn-back">← 返回文章列表</a>
+        </nav>
+    </div>
+</article>
 {% endblock %}
