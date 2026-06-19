@@ -140,6 +140,14 @@
         fetch('https://v1.hitokoto.cn/?c=c&c=d&c=i')
             .then(function(r) { return r.json(); })
             .then(function(data) {
+                // 仅接受诗词(c)、文学(d)、古诗词(i)，其他类型静默重试一次
+                if (data.type !== 'c' && data.type !== 'd' && data.type !== 'i') {
+                    return fetch('https://v1.hitokoto.cn/?c=c&c=d&c=i')
+                        .then(function(r2) { return r2.json(); });
+                }
+                return data;
+            })
+            .then(function(data) {
                 typewrite(data.hitokoto, data.from);
             })
             .catch(function() {
