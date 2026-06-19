@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="kaixin1106's Blog">
     <title>{% block title %}kaixin's Blog{% endblock %}</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="markdown.css">
+    <link rel="stylesheet" href="style.css?v=20260619">
+    <link rel="stylesheet" href="markdown.css?v=20260619">
 </head>
 <body>
     <!-- SVG Icon Sprite Sheet -->
@@ -145,6 +145,18 @@
             .catch(function() {
                 typewrite('读书 · coding · 沉思', '');
             });
+    })();
+
+    // --- Collapsible TOC (mobile) ---
+    (function() {
+        var toggle = document.getElementById('tocToggle');
+        var toc = document.getElementById('postToc');
+        if (!toggle || !toc) return;
+        toggle.addEventListener('click', function() {
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', !expanded);
+            toc.classList.toggle('open', !expanded);
+        });
     })();
 
     // --- Theme switcher (collapsible) ---

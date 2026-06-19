@@ -75,9 +75,12 @@
         </div>
 
         {% if post.toc %}
-        <aside class="post-toc">
-            <h3 class="post-toc-title">目录</h3>
-            <div class="toc-content">{{ post.toc|safe }}</div>
+        <aside class="post-toc" id="postToc">
+            <button class="post-toc-toggle" id="tocToggle" aria-expanded="false">
+                <span>目录</span>
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-arrow-up"/></svg>
+            </button>
+            <div class="toc-content" id="tocContent">{{ post.toc|safe }}</div>
         </aside>
         {% endif %}
     </div>
