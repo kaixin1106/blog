@@ -310,10 +310,11 @@ body {
   border: 2px solid var(--color-border);
 }
 
-.profile-avatar .icon {
-  width: 40px;
-  height: 40px;
-  color: var(--color-primary);
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .profile-name {

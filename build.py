@@ -2,6 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 import markdown
 from markdown.extensions.toc import TocExtension
+from gfm_alerts import GfmAlertExtension
 import frontmatter
 import shutil
 
@@ -9,6 +10,7 @@ root_path = Path.cwd()
 OUTPUT_DIR = root_path/"dist"
 POSTS_DIR = root_path/"posts"
 TEMPLATES_DIR = root_path/"templates"
+STATIC_DIR = root_path/"static"
 
 if not OUTPUT_DIR.exists():
     OUTPUT_DIR.mkdir()
@@ -26,7 +28,7 @@ for filename in POSTS_DIR.iterdir():
 
         # 使用 TocExtension 生成目录
         md = markdown.Markdown(
-            extensions=['extra', 'codehilite', TocExtension(permalink=False, baselevel=2)]
+            extensions=['extra', 'codehilite', TocExtension(permalink=False, baselevel=2), GfmAlertExtension()]
         )
         content_html = md.convert(post.content)
         toc_html = md.toc
@@ -71,6 +73,5 @@ with open(OUTPUT_DIR/"index.html", 'w', encoding='utf-8') as f:
     f.write(index_html)
 
 # --- 复制 CSS ---
-for file in TEMPLATES_DIR.iterdir():
-    if file.suffix == ".css":
-        shutil.copy2(file, OUTPUT_DIR/file.name)
+for file in STATIC_DIR.iterdir():
+    shutil.copy2(file, OUTPUT_DIR/file.name)
