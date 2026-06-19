@@ -1,13 +1,92 @@
 {% extends "base.html" %}
-{% block title %}首页 - 我的博客{% endblock %}
+{% block title %}首页 — kaixin's Blog{% endblock %}
+
+{% block sidebar %}
+<div class="profile-card">
+    <div class="profile-avatar">
+        <svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>
+    </div>
+    <h2 class="profile-name">kaixin</h2>
+    <p class="profile-bio">代码与文字，<br>静心记录的地方。</p>
+    <hr class="profile-divider">
+    <div class="profile-social">
+        <a href="https://github.com/kaixin1106" class="social-link" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg>
+        </a>
+        <a href="mailto:kaixin168kx@163.com" class="social-link" aria-label="Email">
+            <svg class="icon" aria-hidden="true"><use href="#icon-mail"/></svg>
+        </a>
+    </div>
+    <a href="https://codetime.dev" target="_blank" rel="noopener" class="codetime-badge">
+        <img alt="CodeTime Badge" src="https://shields.jannchie.com/endpoint?style=for-the-badge&color=0284c7&url=https%3A%2F%2Fcodetime.dev%2Fv3%2Fusers%2Fshield%3Fuid%3D25151">
+    </a>
+</div>
+
+<div class="timeline-card">
+    <h3 class="timeline-card-title">
+        <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
+        最近动态
+    </h3>
+    {% if timeline and timeline|length > 0 %}
+    <ul class="timeline-list">
+        {% for item in timeline[:5] %}
+        <li class="timeline-item">
+            <span class="timeline-dot"></span>
+            <span class="timeline-date">{{ item.date }}</span>
+            <span class="timeline-text">{{ item.text }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="timeline-empty">暂无动态</p>
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block content %}
-<h1>所有文章</h1>
-<ul>
-    {% for post in posts %}
-    <li>
-        <a href="/{{ post.slug }}.html">{{ post.title }}</a>
-        <small>{{ post.date }}</small>
-    </li>
-    {% endfor %}
-</ul>
+<div class="index-content">
+    <div class="section-header">
+        <h1 class="section-title">
+            <svg class="icon" aria-hidden="true"><use href="#icon-pencil"/></svg>
+            文章
+        </h1>
+        <div class="cute-divider"></div>
+    </div>
+
+    {% if posts %}
+    <ul class="posts-list">
+        {% for post in posts %}
+        <li>
+            <article class="post-item">
+                <div class="post-item-content">
+                    <h2 class="post-title">
+                        <a href="/{{ post.slug }}.html">{{ post.title }}</a>
+                    </h2>
+                    <div class="post-meta">
+                        <span class="post-date">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                            {{ post.date }}
+                        </span>
+                        {% if post.tags %}
+                        <span class="post-tags">
+                            {% for tag in post.tags %}
+                            <span class="tag-pill">{{ tag }}</span>
+                            {% endfor %}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="empty-state">
+        <span class="empty-state-icon">
+            <svg class="icon" aria-hidden="true"><use href="#icon-seedling"/></svg>
+        </span>
+        <p>还没有文章。</p>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

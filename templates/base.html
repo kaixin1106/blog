@@ -3,35 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kaixin1106's Blog">
-    <title>{% block title %}我的博客{% endblock %}</title>
+    <meta name="description" content="kaixin1106's Blog">
+    <title>{% block title %}kaixin's Blog{% endblock %}</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="markdown.css">
 </head>
 <body>
-    <div class="site-wrapper">
-        <!-- 页眉 -->
-        <header class="site-header">
-            <div class="container">
-                <div class="header-content">
-                    <h1 class="site-title"><a href="/">Kaixin1106's Blog</a></h1>
-                </div>
-            </div>
-        </header>
+    <!-- SVG Icon Sprite Sheet -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
+        <symbol id="icon-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </symbol>
+        <symbol id="icon-seedling" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22v-6"/>
+            <path d="M12 10c0-4.42-3.58-8-8-8s0 5.3 0 8c0 4.42 3.58 8 8 8Z"/>
+            <path d="M12 10c0-4.42 3.58-8 8-8s0 5.3 0 8c0 4.42-3.58 8-8 8Z"/>
+        </symbol>
+        <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+            <line x1="16" x2="16" y1="2" y2="6"/>
+            <line x1="8" x2="8" y1="2" y2="6"/>
+            <line x1="3" x2="21" y1="10" y2="10"/>
+        </symbol>
+        <symbol id="icon-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l2.5 6.5L21 9l-4.5 4.5.5 6.5-5-3.25L7 20l.5-6.5L3 9l6.5-.5z"/>
+        </symbol>
+        <symbol id="icon-flower" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v4"/><path d="M12 18v4"/>
+            <path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/>
+            <path d="M2 12h4"/><path d="M18 12h4"/>
+            <path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/>
+        </symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+        </symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </symbol>
+        <symbol id="icon-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+        </symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+        </symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </symbol>
+        <symbol id="icon-rss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 11a9 9 0 0 1 9 9"/>
+            <path d="M4 4a16 16 0 0 1 16 16"/>
+            <circle cx="5" cy="19" r="1"/>
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+        </symbol>
+    </svg>
 
-        <!-- 主内容 -->
-        <main class="site-main">
-            <div class="container">
-                {% block content %}{% endblock %}
+    <!-- 页眉 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">
+                    <a href="/">kaixin's Blog</a>
+                </h1>
+                <p class="site-tagline" id="hitokoto">载入中...</p>
             </div>
+        </div>
+    </header>
+
+    <!-- 主体：侧边栏 + 内容 -->
+    <div class="page-layout">
+        <aside class="page-sidebar" aria-label="个人信息和动态">
+            {% block sidebar %}{% endblock %}
+        </aside>
+
+        <main class="page-main">
+            {% block content %}{% endblock %}
         </main>
-
-        <!-- 页脚 -->
-        <footer class="site-footer">
-            <div class="container">
-                <p>&copy; 2026 MyBlog. </p>
-            </div>
-        </footer>
     </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 kaixin1106</p>
+        </div>
+    </footer>
+
+    <!-- 主题色切换 -->
+    <div class="theme-switcher" id="themeSwitcher" aria-label="切换主题色">
+        <button class="theme-toggle" id="themeToggle" aria-label="展开主题色选择"></button>
+        <div class="theme-panel" id="themePanel">
+            <button class="theme-btn theme-btn--yellow" data-theme="yellow" aria-label="文人黄"></button>
+            <button class="theme-btn theme-btn--blue" data-theme="blue" aria-label="青蓝"></button>
+            <button class="theme-btn theme-btn--green active" data-theme="green" aria-label="青绿"></button>
+        </div>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="回到顶部" title="回到顶部">
+        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"/></svg>
+    </button>
+
+    <script>
+    // --- Hitokoto (一言) with typewriter effect ---
+    (function() {
+        var el = document.getElementById('hitokoto');
+        var cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        el.textContent = '';
+        el.appendChild(cursor);
+
+        function typewrite(text, from) {
+            var full = from ? text + ' —— ' + from : text;
+            var i = 0;
+            el.classList.add('typing');
+            var timer = setInterval(function() {
+                if (i < full.length) {
+                    cursor.before(document.createTextNode(full.charAt(i)));
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    el.classList.remove('typing');
+                    el.classList.add('done');
+                }
+            }, 80);
+        }
+
+        fetch('https://v1.hitokoto.cn/?c=c&c=d&c=i')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                typewrite(data.hitokoto, data.from);
+            })
+            .catch(function() {
+                typewrite('读书 · coding · 沉思', '');
+            });
+    })();
+
+    // --- Theme switcher (collapsible) ---
+    (function() {
+        const THEME_KEY = 'blog-theme';
+        const themes = ['yellow', 'blue', 'green'];
+        const switcher = document.getElementById('themeSwitcher');
+        const toggleBtn = document.getElementById('themeToggle');
+        const panel = document.getElementById('themePanel');
+
+        // Restore saved theme (green = default, no data-theme attribute)
+        const saved = localStorage.getItem(THEME_KEY);
+        if (saved && themes.includes(saved) && saved !== 'green') {
+            document.documentElement.setAttribute('data-theme', saved);
+        }
+
+        // Update active button
+        function updateActive() {
+            var current = document.documentElement.getAttribute('data-theme') || 'green';
+            document.querySelectorAll('.theme-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.theme === current);
+            });
+        }
+        updateActive();
+
+        // Toggle panel
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            switcher.classList.toggle('open');
+        });
+
+        // Select theme
+        panel.addEventListener('click', function(e) {
+            var btn = e.target.closest('.theme-btn');
+            if (!btn) return;
+            var theme = btn.dataset.theme;
+            if (theme === 'green') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            localStorage.setItem(THEME_KEY, theme);
+            updateActive();
+            switcher.classList.remove('open');
+        });
+
+        // Close on outside click
+        document.addEventListener('click', function() {
+            switcher.classList.remove('open');
+        });
+    })();
+
+    // --- Scroll to top ---
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    </script>
 </body>
 </html>
