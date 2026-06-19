@@ -6,7 +6,7 @@
 
 /* Base container */
 .markdown-body {
-  max-width: 780px;
+  max-width: none;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-lg);
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;

@@ -36,7 +36,7 @@
   --font-mono: 'SF Mono', 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
 
   --sidebar-width: 260px;
-  --content-max-width: 780px;
+  --content-max-width: 820px;
 
   --transition-fast: 150ms ease;
   --transition-base: 200ms ease;
@@ -243,7 +243,7 @@ body {
 .page-layout {
   display: flex;
   gap: var(--space-2xl);
-  max-width: 1100px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-lg);
   position: relative;
@@ -380,6 +380,7 @@ body {
   max-width: 100%;
   height: auto;
   border-radius: 6px;
+  margin: 0 auto;
 }
 
 /* ================================
@@ -768,7 +769,7 @@ body {
 /* Post body layout: article + right TOC */
 .post-body-layout {
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   align-items: flex-start;
 }
 
@@ -779,7 +780,7 @@ body {
 
 /* Right-side TOC */
 .post-toc {
-  width: 140px;
+  width: 120px;
   flex-shrink: 0;
   position: sticky;
   top: var(--space-xl);
@@ -1088,7 +1089,7 @@ body {
   }
 
   .post-toc {
-    width: 120px;
+    width: 110px;
   }
 
   .markdown-body {
