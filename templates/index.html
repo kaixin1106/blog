@@ -2,7 +2,7 @@
 {% block title %}首页 — kaixin's Blog{% endblock %}
 
 {% block sidebar %}
-<div class="profile-card">
+<div class="profile-card reveal">
     <div class="profile-avatar">
         <img src="/avatar.png" alt="avatar" class="avatar-img">
     </div>
@@ -22,7 +22,7 @@
     </a>
 </div>
 
-<div class="timeline-card">
+<div class="timeline-card reveal reveal-delay-1">
     <h3 class="timeline-card-title">
         <svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>
         最近动态
@@ -45,7 +45,7 @@
 
 {% block content %}
 <div class="index-content">
-    <div class="section-header">
+    <div class="section-header reveal">
         <h1 class="section-title">
             <svg class="icon" aria-hidden="true"><use href="#icon-pencil"/></svg>
             文章
@@ -57,7 +57,7 @@
     <ul class="posts-list">
         {% for post in posts %}
         <li>
-            <article class="post-item">
+            <article class="post-item reveal">
                 <div class="post-item-content">
                     <h2 class="post-title">
                         <a href="/{{ post.slug }}.html">{{ post.title }}</a>

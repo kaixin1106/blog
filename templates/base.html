@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="style.css?v=20260619v04">
 </head>
 <body>
+    <!-- 阅读进度条 -->
+    <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="阅读进度"></div>
+
     <!-- SVG Icon Sprite Sheet -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
         <symbol id="icon-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -248,6 +251,33 @@
     scrollTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // --- Scroll progress bar ---
+    (function() {
+        var bar = document.getElementById('scrollProgress');
+        if (!bar) return;
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = progress + '%';
+        });
+    })();
+
+    // --- Intersection Observer for scroll reveal ---
+    (function() {
+        var targets = document.querySelectorAll('.reveal');
+        if (!targets.length) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(function(el) { observer.observe(el); });
+    })();
     </script>
 </body>
 </html>
