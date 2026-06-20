@@ -346,11 +346,25 @@
 .markdown-body .callout-caution .callout-header { color: #B91C1C; }
 
 @media (prefers-color-scheme: dark) {
+  :root:not([data-color-scheme="light"]) .markdown-body .callout-tip,
   .markdown-body .callout-tip { background: #0A2E1A; }
+  :root:not([data-color-scheme="light"]) .markdown-body .callout-important,
   .markdown-body .callout-important { background: #1E1035; }
+  :root:not([data-color-scheme="light"]) .markdown-body .callout-warning,
   .markdown-body .callout-warning { background: #3D2E0A; }
+  :root:not([data-color-scheme="light"]) .markdown-body .callout-caution,
   .markdown-body .callout-caution { background: #3B0C0C; }
 }
+
+[data-color-scheme="dark"] .markdown-body .callout-tip { background: #0A2E1A; }
+[data-color-scheme="dark"] .markdown-body .callout-important { background: #1E1035; }
+[data-color-scheme="dark"] .markdown-body .callout-warning { background: #3D2E0A; }
+[data-color-scheme="dark"] .markdown-body .callout-caution { background: #3B0C0C; }
+
+[data-color-scheme="light"] .markdown-body .callout-tip { background: #ECFDF5; }
+[data-color-scheme="light"] .markdown-body .callout-important { background: #F5F3FF; }
+[data-color-scheme="light"] .markdown-body .callout-warning { background: #FEF3C7; }
+[data-color-scheme="light"] .markdown-body .callout-caution { background: #FEF2F2; }
 
 /* ================================
    Print Styles

@@ -141,8 +141,9 @@
    Dark Mode — all themes
    ================================ */
 
+/* Auto: follow system preference (unless user explicitly chose light) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-color-scheme="light"]) {
     --color-bg: #131F18;
     --color-card: #1C2E22;
     --color-card-hover: #223628;
@@ -162,7 +163,7 @@
     --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.6);
   }
 
-  [data-theme="blue"] {
+  [data-theme="blue"]:not([data-color-scheme="light"]) {
     --color-bg: #131D2A;
     --color-card: #1C2838;
     --color-card-hover: #222E40;
@@ -179,7 +180,7 @@
     --color-accent-soft: #352818;
   }
 
-  [data-theme="yellow"] {
+  [data-theme="yellow"]:not([data-color-scheme="light"]) {
     --color-bg: #1E1810;
     --color-card: #2A2218;
     --color-card-hover: #30281D;
@@ -195,6 +196,116 @@
     --color-primary-pale: #2A1E0A;
     --color-accent-soft: #3D2E15;
   }
+}
+
+/* Manual: user clicked dark mode toggle */
+[data-color-scheme="dark"] {
+  --color-bg: #131F18;
+  --color-card: #1C2E22;
+  --color-card-hover: #223628;
+  --color-muted: #18281E;
+  --color-muted-warm: #1C2C22;
+  --color-text: #D8E8DC;
+  --color-text-secondary: #90A898;
+  --color-text-muted: #6B8072;
+  --color-border: #2A4A35;
+  --color-border-soft: #1C3022;
+  --color-border-medium: #385A45;
+  --color-primary-soft: #1E3D2A;
+  --color-primary-pale: #13281A;
+  --color-accent-soft: #352818;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+[data-color-scheme="dark"][data-theme="blue"] {
+  --color-bg: #131D2A;
+  --color-card: #1C2838;
+  --color-card-hover: #222E40;
+  --color-muted: #182232;
+  --color-muted-warm: #1C2636;
+  --color-text: #DDE4ED;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #6B7A90;
+  --color-border: #304058;
+  --color-border-soft: #1E2D42;
+  --color-border-medium: #3D5080;
+  --color-primary-soft: #1E3550;
+  --color-primary-pale: #132235;
+  --color-accent-soft: #352818;
+}
+
+[data-color-scheme="dark"][data-theme="yellow"] {
+  --color-bg: #1E1810;
+  --color-card: #2A2218;
+  --color-card-hover: #30281D;
+  --color-muted: #251F16;
+  --color-muted-warm: #2A241A;
+  --color-text: #E0D8C8;
+  --color-text-secondary: #A09888;
+  --color-text-muted: #787060;
+  --color-border: #4A3D28;
+  --color-border-soft: #352C1A;
+  --color-border-medium: #5C4D35;
+  --color-primary-soft: #3D2E15;
+  --color-primary-pale: #2A1E0A;
+  --color-accent-soft: #3D2E15;
+}
+
+/* Manual: user clicked light mode toggle (overrides system dark) */
+[data-color-scheme="light"] {
+  --color-bg: #F2F8F4;
+  --color-card: #FFFFFF;
+  --color-card-hover: #F8FBF9;
+  --color-muted: #E8F2EB;
+  --color-muted-warm: #ECF4EF;
+  --color-text: #2D3A32;
+  --color-text-secondary: #556058;
+  --color-text-muted: #808A84;
+  --color-border: #C0D8CA;
+  --color-border-soft: #D4E5DB;
+  --color-border-medium: #A0C4AD;
+  --color-primary-soft: #B7D8C5;
+  --color-primary-pale: #D8EDE2;
+  --color-accent-soft: #F2EDDD;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+[data-color-scheme="light"][data-theme="blue"] {
+  --color-bg: #F4F7FA;
+  --color-card: #FFFFFF;
+  --color-card-hover: #F8FAFC;
+  --color-muted: #EAF0F5;
+  --color-muted-warm: #EDF2F7;
+  --color-text: #2D3540;
+  --color-text-secondary: #5A6470;
+  --color-text-muted: #88909C;
+  --color-border: #CCD8E5;
+  --color-border-soft: #DDE5F0;
+  --color-border-medium: #B0C2D5;
+  --color-primary-soft: #C5D9E8;
+  --color-primary-pale: #E2EDF5;
+  --color-accent-soft: #F2EDDD;
+}
+
+[data-color-scheme="light"][data-theme="yellow"] {
+  --color-bg: #FDF8ED;
+  --color-card: #FFFBF2;
+  --color-card-hover: #FFFEF9;
+  --color-muted: #F2ECDD;
+  --color-muted-warm: #F5F0E3;
+  --color-text: #3D3226;
+  --color-text-secondary: #6B5D4F;
+  --color-text-muted: #968878;
+  --color-border: #E0D3B0;
+  --color-border-soft: #EDE3CC;
+  --color-border-medium: #D4C598;
+  --color-primary-soft: #E0D3B0;
+  --color-primary-pale: #F2EDDD;
+  --color-accent-soft: #F2EDDD;
 }
 
 /* ================================
@@ -752,6 +863,14 @@ body {
   }
 }
 
+[data-color-scheme="dark"] .scroll-progress {
+  box-shadow: 0 0 12px var(--color-primary);
+}
+
+[data-color-scheme="light"] .scroll-progress {
+  box-shadow: 0 0 8px var(--color-primary-light);
+}
+
 /* Empty state */
 .empty-state {
   text-align: center;
@@ -1068,6 +1187,40 @@ body {
   transform: scale(1.12);
 }
 
+/* ================================
+   Dark/Light Mode Toggle
+   ================================ */
+
+.darkmode-toggle {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 101;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-medium);
+  cursor: pointer;
+  background: var(--color-card);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.darkmode-toggle:hover {
+  transform: scale(1.1);
+  background: var(--color-primary-pale);
+}
+
+.darkmode-toggle .icon {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 480px) {
   .theme-switcher {
     right: 68px;
@@ -1080,6 +1233,16 @@ body {
   .theme-btn {
     width: 24px;
     height: 24px;
+  }
+  .darkmode-toggle {
+    bottom: 82px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+  .darkmode-toggle .icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -1436,5 +1599,15 @@ body {
     bottom: 34px;
     width: 34px;
     height: 34px;
+  }
+  .darkmode-toggle {
+    bottom: 78px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+  }
+  .darkmode-toggle .icon {
+    width: 15px;
+    height: 15px;
   }
 }

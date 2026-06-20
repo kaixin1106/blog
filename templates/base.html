@@ -68,6 +68,16 @@
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12 6 12 12 16 14"/>
         </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </symbol>
         <!-- GFM Alert Icons -->
         <symbol id="alert-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -132,6 +142,12 @@
             <button class="theme-btn theme-btn--green active" data-theme="green" aria-label="青绿"></button>
         </div>
     </div>
+
+    <!-- 明暗切换 -->
+    <button class="darkmode-toggle" id="darkModeToggle" aria-label="切换明暗模式" title="切换明暗模式">
+        <svg class="icon" aria-hidden="true" id="darkModeIconSun" style="display:none"><use href="#icon-sun"/></svg>
+        <svg class="icon" aria-hidden="true" id="darkModeIconMoon" style="display:none"><use href="#icon-moon"/></svg>
+    </button>
 
     <!-- 回到顶部按钮 -->
     <button class="scroll-top" id="scrollTopBtn" aria-label="回到顶部" title="回到顶部">
@@ -240,6 +256,52 @@
         // Close on outside click
         document.addEventListener('click', function() {
             switcher.classList.remove('open');
+        });
+    })();
+
+    // --- 明暗模式切换 ---
+    (function() {
+        var KEY = 'blog-color-scheme';
+        var toggle = document.getElementById('darkModeToggle');
+        var iconSun = document.getElementById('darkModeIconSun');
+        var iconMoon = document.getElementById('darkModeIconMoon');
+        if (!toggle) return;
+
+        function updateIcons(isDark) {
+            if (iconMoon) iconMoon.style.display = isDark ? '' : 'none';
+            if (iconSun) iconSun.style.display = isDark ? 'none' : '';
+        }
+
+        function isEffectivelyDark() {
+            var attr = document.documentElement.getAttribute('data-color-scheme');
+            if (attr === 'dark') return true;
+            if (attr === 'light') return false;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        function setScheme(scheme) {
+            if (scheme === 'dark') {
+                document.documentElement.setAttribute('data-color-scheme', 'dark');
+            } else if (scheme === 'light') {
+                document.documentElement.setAttribute('data-color-scheme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-color-scheme');
+            }
+            localStorage.setItem(KEY, scheme || '');
+            updateIcons(isEffectivelyDark());
+        }
+
+        // 还原保存的偏好
+        var saved = localStorage.getItem(KEY);
+        if (saved === 'dark') setScheme('dark');
+        else if (saved === 'light') setScheme('light');
+        else updateIcons(isEffectivelyDark());
+
+        toggle.addEventListener('click', function() {
+            var current = document.documentElement.getAttribute('data-color-scheme');
+            if (!current || current === 'light') setScheme('dark');
+            else if (current === 'dark') setScheme('light');
+            else setScheme('');
         });
     })();
 
