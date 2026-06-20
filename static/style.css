@@ -1193,8 +1193,8 @@ body {
 
 .darkmode-toggle {
   position: fixed;
-  bottom: 90px;
-  right: 24px;
+  bottom: 40px;
+  right: 128px;
   z-index: 101;
   width: 36px;
   height: 36px;
@@ -1235,8 +1235,8 @@ body {
     height: 24px;
   }
   .darkmode-toggle {
-    bottom: 82px;
-    right: 16px;
+    bottom: 38px;
+    right: 114px;
     width: 32px;
     height: 32px;
   }
@@ -1601,8 +1601,8 @@ body {
     height: 34px;
   }
   .darkmode-toggle {
-    bottom: 78px;
-    right: 16px;
+    bottom: 34px;
+    right: 110px;
     width: 30px;
     height: 30px;
   }
